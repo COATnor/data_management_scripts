@@ -1,0 +1,118 @@
+organizations:
+  - name: nina
+    id: nina
+    title: NINA
+    description: Norsk Institutt for NAturforskning
+    image_url: 'path_to/logoweb.png'
+
+datasets:
+  - name: moth_storelva
+    title: MOTH Larvae Density timeseries Storelva
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: MOTH Larvae density transects
+    version: 1.0
+    owner_org: nina
+  - name: moth_varanger
+    title: MOTH Larvae Density timeseries Varanger
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: MOTH Larvae density transects
+    version: 1.0
+    owner_org: nina
+  - name: moth_reinoya
+    title: MOTH Larvae Density timeseries Reinoya
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: MOTH Larvae density transects
+    version: 1.0
+    owner_org: nina
+  - name: moth_island_mainland
+    title: MOTH Larvae Density timeseries Island Mainland
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: MOTH Larvae density transects
+    version: 1.0
+    owner_org: nina
+  - name: moth_skogsfjord
+    title: MOTH Larvae Density timeseries Skogsfjord
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: MOTH Larvae density transects
+    version: 1.0
+    owner_org: nina
+  - name: vegetation_exclosure
+    title: Vegetation Exclosure
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: Abundance index for plant (by group) and other species
+    version: 1.0
+    owner_org: nina
+  - name: ndvidrop_varanger
+    title: NDVI Drop Varanger
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: NDVI
+    version: 1.0
+    owner_org: nina
+  - name: tana_gps_shp_2017
+    title: Tana GPS tracks SHP 2017
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: Tana gps tracks as shapefiles - year 2017
+    version: 1.0
+    owner_org: nina
+  - name: tana_gps_gpx_2017
+    title: Tana GPS tracks GPX 2017
+    private: True
+    author: Some author
+    author_email: some.author@email.no
+    maintainer: Some maintaniner
+    maintainer_email: some.maintainer@email.no
+    notes: Tana gps tracks as gpx - year 2017
+    version: 1.0
+    owner_org: nina
+
+folders:
+  - name: moth_storelva
+    path: /path_to/MOTH_LARVAE_Density_Timeseries/Storelva
+  - name: moth_reinoya
+    path: /path_to/MOTH_LARVAE_Density_Timeseries/Reinoya
+  - name: moth_varanger
+    path: /path_to/MOTH_LARVAE_Density_Timeseries/Varanger
+  - name: moth_skogsfjord
+    path: /path_to/MOTH_LARVAE_Density_Timeseries/Skogsfjord
+  - name: moth_island_mainland
+    path: /path_to/MOTH_LARVAE_Density_Timeseries/Island_mainland
+  - name: vegetation_exclosure
+    path: /path_to/VEGETATION_Exclosure
+  - name: ndvidrop_varanger
+    path: /path_to/ndvidropVaranger
+  - name: tana_gps_shp_2017
+    path: /path_to/GPS_tracks_shp
+  - name: tana_gps_gpx_2017
+    path: /path_to/GPS_tracks_gpx
