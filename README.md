@@ -11,4 +11,4 @@ You can upload new datasets by:
  - using the CKAN API (scripts sending API requests)
  
 ### The CKAN API
-Please find detail at: https://docs.ckan.org/en/2.8/api/
+Please find details at: https://docs.ckan.org/en/2.8/api/
