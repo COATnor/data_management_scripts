@@ -17,6 +17,6 @@ Please find details at: https://docs.ckan.org/en/2.8/api/
 
 https://github.com/ckan/ckanapi
 
-#### Using R
+### Using R
 
 https://github.com/ropensci/ckanr
