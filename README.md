@@ -12,3 +12,11 @@ You can upload new datasets by:
  
 ### The CKAN API
 Please find details at: https://docs.ckan.org/en/2.8/api/
+
+### Using python:
+
+https://github.com/ckan/ckanapi
+
+#### Using R
+
+https://github.com/ropensci/ckanr
