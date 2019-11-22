@@ -53,7 +53,7 @@ dataset <- mod_web_pkg[[1]]$name
 # Set the remote URL pointing to the .zip package containing all the resources (files) of a dataset
 remote_zip <- paste("https://coatdemo.frafra.no/dataset/", dataset, "/zip", sep = "")
 # Set a local destination for data download
-destination = paste("/my/local/folder/path/", dataset, sep = "")
+destination <- paste("/my/local/folder/path/", dataset, sep = "")
 # download the zip package
 dnlzip <- download.file(r, destination)
 
