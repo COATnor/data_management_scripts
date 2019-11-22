@@ -18,12 +18,12 @@ install.packages("ckanr")
 library("ckanr")
 
 # setup the connection to the data portal
-# The use of an API key allows the user to access also non-public data  !!!! MATTEO: is this true? User control is the purpose of the API key?
+# The use of an API key allows the user to access also non-public data
 ckanr_setup(url = "https://coatdemo.frafra.no/", key = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 # Without an API key only public data can be reached
 ckanr_setup(url = "https://coatdemo.frafra.no/")
 
-# list public datasets (aka packages)
+# list datasets visible to current user (aka packages)
 pack<-package_list_current()
 
 # list modules (aka organizations). 
