@@ -18,13 +18,15 @@ install.packages("ckanr")
 library("ckanr")
 
 # setup the connection to the data portal
+COAT_url<-"https://coatdemo.frafra.no/"
 # The use of an API key allows the user to access also non-public data
-ckanr_setup(url = "https://coatdemo.frafra.no/", key = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ckanr_setup(url = COAT_url, key = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 # Without an API key only public data can be reached
-ckanr_setup(url = "https://coatdemo.frafra.no/")
+ckanr_setup(url = COAT_url)
 
 # list datasets visible to current user (aka packages)
-pack<-package_list_current()
+pack<-package_list(as='table') #this will give just a list of datasat names
+#pack<-package_list_current(as='table') #this will give a list of datasat names with all details about files within the dataset
 
 # list modules (aka organizations). 
 # orgs$title will contain the name of the module and orgs$id will contain the unique ID to access the module data
@@ -38,24 +40,26 @@ mod_web_pkg[[1]]$id
 # number of files in this dataset
 mod_web_pkg[[1]]$num_resources
 # the names of the files in the dataset
-files<-mod_web_pkg[[1]]$resources %>% sapply('[[','name')
+mod_web_pkg[[1]]$resources %>% sapply('[[','name')
 # the ids of the files in the dataset
-filesid<-mod_web_pkg[[1]]$resources %>% sapply('[[','id')
+mod_web_pkg[[1]]$resources %>% sapply('[[','id')
 
 #---------download a single text file from a dataset----------
+#Give a destination directory for downloaded files
 destdir<-"R://Prosjekter/COAT/Data Management/Formatted data/scripts/"
+#Give a file name for the single file to be donwloaded
 destfile<-"dwnload.txt"
-dnlfile<-download.file(mod_web_pkg[[1]]$resources[[1]]$url,paste(destdir,destfile,sep=""))
+download.file(mod_web_pkg[[1]]$resources[[1]]$url,paste(destdir,destfile,sep=""))
 
 #--------download all files in a dataset-------
 # get the dataset name (which includes the version - update to a specific other version if needed)
 dataset <- mod_web_pkg[[1]]$name
 # Set the remote URL pointing to the .zip package containing all the resources (files) of a dataset
-remote_zip <- paste("https://coatdemo.frafra.no/dataset/", dataset, "/zip", sep = "")
+remote_zip <- paste(paste(COAT_url,"dataset/", sep=""), dataset, "/zip", sep = "")
 # Set a local destination for data download
-destination <- paste("/my/local/folder/path/", dataset, sep = "")
+destination <- paste(destdir, paste(dataset,".zip",sep=""), sep = "")
 # download the zip package
-dnlzip <- download.file(remote_zip, destination, mode="wb")
+download.file(remote_zip, destination, mode="wb")
 
 #----- Details about modules and users-------------
 # see details about a specific organization (=modules in COAT)
