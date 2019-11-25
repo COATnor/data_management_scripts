@@ -55,7 +55,7 @@ remote_zip <- paste("https://coatdemo.frafra.no/dataset/", dataset, "/zip", sep 
 # Set a local destination for data download
 destination <- paste("/my/local/folder/path/", dataset, sep = "")
 # download the zip package
-dnlzip <- download.file(r, destination)
+dnlzip <- download.file(remote_zip, destination, mode="wb")
 
 #----- Details about modules and users-------------
 # see details about a specific organization (=modules in COAT)
