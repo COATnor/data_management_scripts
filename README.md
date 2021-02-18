@@ -20,3 +20,9 @@ https://github.com/ckan/ckanapi
 ### Using R
 
 https://github.com/ropensci/ckanr
+
+It is recommended to install the development version of ckanr:
+```
+install.packages("remotes")
+remotes::install_github("ropensci/ckanr")
+```
