@@ -20,7 +20,7 @@
 
 ## EXAMPLE
 
-## source() # load the function and all helper functions from github
+## source("https://github.com/COATnor/data_management_scripts/blob/master/download_parquet_files_from_coat_data_portal.R?raw=TRUE") # load the function and all helper functions from github
 
 ## name <- 
 
