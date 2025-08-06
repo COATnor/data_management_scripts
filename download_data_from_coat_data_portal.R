@@ -13,10 +13,7 @@
 ## After loging in to data.coat.no, the API key can be found by clicking on your name in the top right corner
 
 ## The development version of the ckanr package has to be installed (remotes::install_github("ropensci/ckanr")), 
-## this will be done by the function if the package is not installed yet.
-
-## For downloading parquet files, this development version hast to be installed (remotes::install_github("hannaboe/ckanr")).
-## This has to be done manually before running the functions! This version works also for downloading txt-files
+## For downloading parquet files, this development version hast to be installed: remotes::install_github("hannaboe/ckanr").
 
 ## You can first list all COAT modules and then list all datasets of the selected module
 ## From this list you can select the datasets you want to download, list all files belonging to the dataset and select the files you want to download
