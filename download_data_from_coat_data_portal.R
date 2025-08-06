@@ -10,10 +10,11 @@
 ## The data can either be imported to the current R session or saved on your computer
 
 ## For downloading private datasets, you need the specify an API key. 
-## After loging in to data.coat.no, the API key can be found by clicking on your name in the top right corner
+## After loging in to data.coat.no, the API key can be found by clicking on your name in the top right corner. Copy the API key in the bottom left corner.
+## The API key is private and should not be shared with others.
 
 ## The development version of the ckanr package has to be installed (remotes::install_github("ropensci/ckanr")), 
-## For downloading parquet files, this development version hast to be installed: remotes::install_github("hannaboe/ckanr").
+## For downloading parquet files, this development version hast to be installed (remotes::install_github("hannaboe/ckanr")).
 
 ## You can first list all COAT modules and then list all datasets of the selected module
 ## From this list you can select the datasets you want to download, list all files belonging to the dataset and select the files you want to download
@@ -23,34 +24,40 @@
 
 ## EXAMPLE
 
-if (FALSE) {
+if (FALSE) {  # ignore this (prevents running the example when sourcing the script)
   
-  ## load libraries
-  if (!require("ckanr")) remotes::install_github("ropensci/ckanr"); library("ckanr")  # (remotes::install_github("hannaboe/ckanr")) for downloading parquet files
+  ## load libraries (missing libraries will be installed)
+  if (!require("ckanr")) remotes::install_github("ropensci/ckanr"); library("ckanr")
   if (!require("tidyverse")) install.packages("tidyverse"); library("tidyverse")
   
-  ## get function for downloading data from the COAT Data Portal from GitHub
+  ## get functions for downloading data from the COAT Data Portal from GitHub (functions from this script)
   source("https://github.com/COATnor/data_management_scripts/blob/master/download_data_from_coat_data_portal.R?raw=TRUE")
   
-  ## set up the connection to the COAT Data Portal
+  ## set up the connection to the COAT Data Portal (this is where you need your API key from data.coat.no)
   ckanr_setup(url =  "https://data.coat.no", 
-              key = NULL)  # API key for downloading private datasets or datasets under embargo (the API key can be found by clicking on your name in the top right corner on data.coat.no)
+              key = NULL)  # replace NULL with your API key (e.g. "asdf123af123") for downloading private datasets or datasets under embargo, without API key, only public datasets will be listed
+                           # the API key can be found by clicking on your name in the top right corner on data.coat.no
   
   ## list all modules (optional)
   organization_list(as = "table")$name
   
   ## list all datasets of a module (optional)
-  list_datasets(module = "climate-module")
+  list_datasets(module = "climate-module")  # wirte here the module name
   
   ## list the names of all data files of the selected dataset (optional)
-  filenames <- list_data_files("v_snowdepth_intensive_v1")  # name of the dataset (choose from the list above)
+  filenames <- list_data_files("v_snowdepth_intensive_v1")  # write here the name of the dataset (choose from the list above)
   
   ## download data
-  coat_dat <- download_coat_data(name = "v_snowdepth_intensive_v1", # name of the dataset (choose from the list above)
-                                 filenames = filenames[!grepl("readme|aux|coordinates", filenames)], # names of the files that should be downloaded, e.g. all data files
+  coat_dat <- download_coat_data(name = "v_snowdepth_intensive_v1", # write here name of the dataset (choose from the list above)
+                                 filenames = filenames[!grepl("readme|aux|coordinates", filenames)], # names of the files that should be downloaded, e.g. all data files (without readme, aux and coordinate file)
                                  store = "session", #"session" for importing the data in the current R session, "disk" for saving the data on your computer
-                                 out.dir = NA) #if store = "disk", you have to specify the path to a folder where the data should be stored
-}
+                                 out.dir = NA) # if store = "disk", you have to specify the path to a folder where the data should be stored
+  
+  ## combine all data files of the list in one data frame (works only if all files have the same structure)
+  dat <- do.call(rbind, coat_dat)
+  
+}  # ignore this (prevents running the example when sourcing the script)
+
 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -111,7 +118,8 @@ download_coat_data <- function(name = name,
   return(mylist)
 }
 
-list_datasets <- function(module = module) {
+list_datasets <- function(COAT_key = COAT_key, 
+                         module = module) {
   
   ## search for all datasets of a module
   all_pkg <- package_search(q = paste0("organization:", module), rows = 1000, include_private = TRUE, as = "table")$results %>% 
