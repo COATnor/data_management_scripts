@@ -114,8 +114,7 @@ download_coat_data <- function(name = name,
   return(mylist)
 }
 
-list_datasets <- function(COAT_key = COAT_key, 
-                         module = module) {
+list_datasets <- function(module = module) {
   
   ## search for all datasets of a module
   all_pkg <- package_search(q = paste0("organization:", module), rows = 1000, include_private = TRUE, as = "table")$results %>% 
